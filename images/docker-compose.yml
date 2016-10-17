@@ -1,0 +1,16 @@
+version: '2'
+services:
+  server:
+    image: sonatype/nexus3
+    ports:
+      - "8081"
+    labels:
+      - "traefik.backend=nexus"
+      - "traefik.frontend.rule=Host:nexus.invivoo.cspinformatique.com"
+    networks:
+      - traefik
+
+networks:
+  traefik:
+    external:
+      name: traefik_default
