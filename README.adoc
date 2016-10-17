@@ -257,3 +257,24 @@ Nexus. Généralement, on choisit le fichier `$M2_HOME/settings.xml`.
     </servers>
 </settings>
 ----
+
+=== Release d'une version finale
+
+Maven supporte propose le plugin `release` qui permet de gérer automatiquement
+la mise à jour des pom pour une version non `SNAPSHOT`.
+
+Suite à cette mise à jour, le plugin s'occupera de lancer une compilation de
+test. Une deuxième étape permet de distribuer les binaires produits vers le
+serveur d'artefact et de tagger les sources du projet.
+
+Pour ce faire, la configuration suivante est nécessaire dans le projet :
+
+[source,xml]
+.pom.xml
+----
+<scm>
+		<url>https://github.com/daniellavoie/Kubik</url>
+		<connection>scm:git:https://github.com/daniellavoie/Kubik.git</connection>
+		<developerConnection>scm:git:https://github.com/daniellavoie/Kubik.git</developerConnection>
+</scm>
+----
